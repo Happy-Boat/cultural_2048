@@ -93,30 +93,96 @@ GameManager.prototype.addRandomTile = function () {
   }
 };
 
-// 显示介绍窗口的方法
+
 GameManager.prototype.showInfoPopup = function (value) {
   const info = thirteenClassicsInfo[value];
+  
+  // 创建遮罩层（背景变暗效果）
+  const overlay = document.createElement('div');
+  overlay.classList.add('popup-overlay');
+  
+  // 创建弹窗容器
   const popup = document.createElement('div');
   popup.classList.add('info-popup');
-
+  
+  // 关闭按钮
   const closeButton = document.createElement('span');
   closeButton.classList.add('close-button');
   closeButton.textContent = '×';
   closeButton.addEventListener('click', () => {
-    popup.remove();
+    // 添加关闭动画
+    popup.classList.remove('active');
+    overlay.classList.remove('active');
+    
+    // 动画结束后移除元素
+    setTimeout(() => {
+      popup.remove();
+      overlay.remove();
+    }, 300);
   });
-
+  
+  // 点击遮罩层也可以关闭弹窗
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closeButton.click();
+    }
+  });
+  
+  // 标题
   const title = document.createElement('h2');
-  title.textContent = `介绍`;
-
+  title.textContent = `《${this.getClassicName(value)}》`;
+  
+  // 图片元素
+  const img = document.createElement('img');
+  img.classList.add('popup-image');
+  img.src = `image_shisanjing/${value}.jpg`;
+  img.alt = `${value} 对应的十三经图片`;
+  
+  // 图片加载失败时的处理
+  img.onerror = () => {
+    img.src = 'default-image.jpg'; // 替换为你的默认图片路径
+    img.alt = '图片加载失败';
+  };
+  
+  // 内容文本
   const content = document.createElement('p');
   content.textContent = info;
-
+  
+  // 组装弹窗
   popup.appendChild(closeButton);
   popup.appendChild(title);
+  popup.appendChild(img);
   popup.appendChild(content);
-
+  
+  // 添加到页面
+  document.body.appendChild(overlay);
   document.body.appendChild(popup);
+  
+  // 触发动画（需要延迟以确保浏览器捕获到样式变化）
+  setTimeout(() => {
+    popup.classList.add('active');
+    overlay.classList.add('active');
+  }, 10);
+};
+
+// 可选：添加一个方法根据数字获取经典名称（让标题更友好）
+GameManager.prototype.getClassicName = function (value) {
+  const names = {
+    2: "诗经",
+    4: "尚书",
+    8: "礼记",
+    16: "周礼",
+    32: "仪礼",
+    64: "孟子",
+    128: "论语",
+    256: "周易",
+    512: "左传",
+    1024: "公羊传",
+    2048: "谷梁传",
+    4096: "孝经",
+    8192: "尔雅"
+  };
+  return names[value] || `十三经（${value}）`;
 };
 
 // Sends the updated grid to the actuator

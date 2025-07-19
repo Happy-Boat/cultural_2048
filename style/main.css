@@ -780,25 +780,78 @@ hr {
   .game-message .lower {
     margin-top: 30px !important; } }
 
-/* 介绍弹窗的样式 */
-.info-popup {
-  position: fixed; /* 固定位置 */
-  top: 50%; /* 垂直居中 */
-  left: 50%; /* 水平居中 */
-  transform: translate(-50%, -50%); /* 精确居中 */
-  background-color: white; /* 背景颜色 */
-  border: 1px solid #ccc; /* 边框 */
-  padding: 20px; /* 内边距 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 阴影 */
-  z-index: 1000; /* 层级 */
-  max-width: 80%; /* 最大宽度 */
+/* 遮罩层样式 */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+  z-index: 999;
 }
 
-/* 关闭按钮的样式 */
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 弹窗样式 */
+.info-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  max-width: 90%;
+  width: 500px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.info-popup.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  visibility: visible;
+}
+
+/* 关闭按钮样式 */
 .close-button {
-  position: absolute; /* 绝对定位 */
-  top: 10px; /* 距离顶部的距离 */
-  right: 10px; /* 距离右侧的距离 */
-  cursor: pointer; /* 鼠标指针样式 */
-  font-size: 20px; /* 字体大小 */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+  transition: all 0.2s;
+}
+
+.close-button:hover {
+  color: #333;
+  transform: scale(1.2);
+}
+
+/* 图片样式 */
+.popup-image {
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  margin: 15px auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.popup-image:hover {
+  transform: scale(1.03);
 }
