@@ -1,90 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <title>2048文物之旅</title> 
-  <link href="style/main.css" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
-  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
-  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合成儒家</title>
+    <!-- 引入现有项目的样式 -->
+    <link rel="stylesheet" href="style/main.css">
+    <style>
+        .game-menu {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .game-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #776e65;
+        }
+        .game-button {
+            display: block;
+            width: 80%;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #8f7a66;
+            color: white;
+            border-radius: 10px;
+            font-size: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .game-button:hover {
+            background-color: #9f8b77;
+        }
+        .source-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="heading">
-      <h1 class="title">合成十三经</h1>
-      <div class="scores-container">
-        <div class="score-container">0</div>
-        <div class="best-container">0</div>
-      </div>
+    <div class="game-menu">
+        <h1 class="game-title">儒家文化2048</h1>
+        <a href="shisanjing.html" class="game-button">合成十三经</a>
+        <a href="lunyu.html" class="game-button">合成儒家周边</a>
     </div>
-
-    <div class="above-game">
-      <p class="game-intro">十三经是哪十三经？</strong></p>
-      <a class="restart-button">新游戏</a>
+    <div class="source-link">
+        <p>源代码链接：</p>
+        <a href="https://github.com/Happy-Boat/cultural_2048">https://github.com/Happy-Boat/cultural_2048</a>
     </div>
-
-    <div class="game-container">
-      <div class="game-message">
-        <p></p>
-        <div class="lower">
-	        <a class="keep-playing-button">继续玩</a>
-          <a class="retry-button">再来一次</a>
-        </div>
-      </div>
-
-      <div class="grid-container">
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-      </div>
-
-      <div class="tile-container">
-
-      </div>
-    </div>
-
-    <p class="game-explanation">
-    <strong class="important">雅趣:</strong> 凭 <strong>经籍</strong> 会方块，于数字流转间邂逅《诗》《书》《礼》《易》。当两叶同源文脉相触，便 <strong>融贯</strong> 为更精深的经典篇章，在方寸之间漫溯千年文脉！
-</p>
-  </div>
-
-  <script src="js/bind_polyfill.js"></script>
-  <script src="js/classlist_polyfill.js"></script>
-  <script src="js/animframe_polyfill.js"></script>
-  <script src="js/keyboard_input_manager.js"></script>
-  <script src="js/html_actuator.js"></script>
-  <script src="js/grid.js"></script>
-  <script src="js/tile.js"></script>
-  <script src="js/local_storage_manager.js"></script>
-  <script src="js/game_manager.js"></script>
-  <script src="js/application.js"></script>
 </body>
 </html>
