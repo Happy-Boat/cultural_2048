@@ -95,6 +95,12 @@ h1.title {
 .best-container:after {
   content: "Best"; }
 
+.lunyu-text {
+  white-space: pre-line;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
 p {
   margin-top: 0;
   margin-bottom: 10px;
@@ -331,84 +337,109 @@ hr {
     background-repeat: no-repeat; /* 防止图片重复 */
     background-position: center; /* 图片居中显示 */
 }
-
-.tile.tile-2 .tile-inner {
-    background-image: url('../image_shisanjing/2.jpg');
-}
-
-.tile.tile-4 .tile-inner {
-    background-image: url('../image_shisanjing/4.jpg');
-}
-
-.tile.tile-8 .tile-inner {
-    background-image: url('../image_shisanjing/8.jpg');
-}
-
-.tile.tile-16 .tile-inner {
-    background-image: url('../image_shisanjing/16.jpg');
-}
-
-.tile.tile-32 .tile-inner {
-    background-image: url('../image_shisanjing/32.jpg');
-}
-
-.tile.tile-64 .tile-inner {
-    background-image: url('../image_shisanjing/64.jpg');
-}
+/* ============== 石经模式 (默认) ============== */
+.tile.tile-2 .tile-inner { background-image: url('../image_shisanjing/2.jpg'); }
+.tile.tile-4 .tile-inner { background-image: url('../image_shisanjing/4.jpg'); }
+.tile.tile-8 .tile-inner { background-image: url('../image_shisanjing/8.jpg'); }
+.tile.tile-16 .tile-inner { background-image: url('../image_shisanjing/16.jpg'); }
+.tile.tile-32 .tile-inner { background-image: url('../image_shisanjing/32.jpg'); }
+.tile.tile-64 .tile-inner { background-image: url('../image_shisanjing/64.jpg'); }
 
 .tile.tile-128 .tile-inner {
     background-image: url('../image_shisanjing/128.jpg');
     font-size: 45px;
-}
-@media screen and (max-width: 520px) {
-    .tile.tile-128 .tile-inner {
-        font-size: 25px;
-    }
 }
 
 .tile.tile-256 .tile-inner {
     background-image: url('../image_shisanjing/256.jpg');
     font-size: 45px;
 }
-@media screen and (max-width: 520px) {
-    .tile.tile-256 .tile-inner {
-        font-size: 25px;
-    }
-}
 
 .tile.tile-512 .tile-inner {
     background-image: url('../image_shisanjing/512.jpg');
     font-size: 45px;
-}
-@media screen and (max-width: 520px) {
-    .tile.tile-512 .tile-inner {
-        font-size: 25px;
-    }
 }
 
 .tile.tile-1024 .tile-inner {
     background-image: url('../image_shisanjing/1024.jpg');
     font-size: 35px;
 }
-@media screen and (max-width: 520px) {
-    .tile.tile-1024 .tile-inner {
-        font-size: 15px;
-    }
-}
 
 .tile.tile-2048 .tile-inner {
     background-image: url('../image_shisanjing/2048.jpg');
     font-size: 35px;
 }
-@media screen and (max-width: 520px) {
-    .tile.tile-2048 .tile-inner {
-        font-size: 15px;
-    }
+
+.tile.tile-4096 .tile-inner {
+    background-image: url('../image_shisanjing/4096.jpg');
+    font-size: 30px;
 }
 
-.tile.tile-super .tile-inner {
-    background-image: url('../image_shisanjing/super.jpg');
+.tile.tile-8192 .tile-inner {
+    background-image: url('../image_shisanjing/8192.jpg');
     font-size: 30px;
+}
+
+/* ============== 论语模式 (通过 .lunyu-game 类启用) ============== */
+.lunyu-game .tile.tile-2 .tile-inner { background-image: url('../image_lunyu/2.jpg'); }
+.lunyu-game .tile.tile-4 .tile-inner { background-image: url('../image_lunyu/4.jpg'); }
+.lunyu-game .tile.tile-8 .tile-inner { background-image: url('../image_lunyu/8.jpg'); }
+.lunyu-game .tile.tile-16 .tile-inner { background-image: url('../image_lunyu/16.jpg'); }
+.lunyu-game .tile.tile-32 .tile-inner { background-image: url('../image_lunyu/32.jpg'); }
+.lunyu-game .tile.tile-64 .tile-inner { background-image: url('../image_lunyu/64.jpg'); }
+
+.lunyu-game .tile.tile-128 .tile-inner {
+    background-image: url('../image_lunyu/128.jpg');
+    font-size: 45px;
+}
+
+.lunyu-game .tile.tile-256 .tile-inner {
+    background-image: url('../image_lunyu/256.jpg');
+    font-size: 45px;
+}
+
+.lunyu-game .tile.tile-512 .tile-inner {
+    background-image: url('../image_lunyu/512.jpg');
+    font-size: 45px;
+}
+
+.lunyu-game .tile.tile-1024 .tile-inner {
+    background-image: url('../image_lunyu/1024.jpg');
+    font-size: 35px;
+}
+
+.lunyu-game .tile.tile-2048 .tile-inner {
+    background-image: url('../image_lunyu/2048.jpg');
+    font-size: 35px;
+}
+
+.lunyu-game .tile.tile-4096 .tile-inner {
+    background-image: url('../image_lunyu/4096.jpg');
+    font-size: 30px;
+}
+
+.lunyu-game .tile.tile-8192 .tile-inner {
+    background-image: url('../image_lunyu/8192.jpg');
+    font-size: 30px;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 520px) {
+    .tile.tile-128 .tile-inner { font-size: 25px; }
+    .tile.tile-256 .tile-inner { font-size: 25px; }
+    .tile.tile-512 .tile-inner { font-size: 25px; }
+    .tile.tile-1024 .tile-inner { font-size: 15px; }
+    .tile.tile-2048 .tile-inner { font-size: 15px; }
+    .tile.tile-4096 .tile-inner { font-size: 12px; }
+    .tile.tile-8192 .tile-inner { font-size: 12px; }
+    
+    .lunyu-game .tile.tile-128 .tile-inner { font-size: 25px; }
+    .lunyu-game .tile.tile-256 .tile-inner { font-size: 25px; }
+    .lunyu-game .tile.tile-512 .tile-inner { font-size: 25px; }
+    .lunyu-game .tile.tile-1024 .tile-inner { font-size: 15px; }
+    .lunyu-game .tile.tile-2048 .tile-inner { font-size: 15px; }
+    .lunyu-game .tile.tile-4096 .tile-inner { font-size: 12px; }
+    .lunyu-game .tile.tile-8192 .tile-inner { font-size: 12px; }
 }
 @media screen and (max-width: 520px) {
     .tile.tile-super .tile-inner {
