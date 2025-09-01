@@ -97,6 +97,7 @@ const lunyuInfo = {
 // Restart the game
 GameManager.prototype.restart = function () {
   this.storageManager.clearGameState();
+  this.storageManager.clearMaxValue(this.mode);
   this.actuator.continueGame(); // Clear the game won/lost message
   this.setup();
 };
@@ -141,6 +142,7 @@ GameManager.prototype.setup = function () {
 
     // Add the initial tiles
     this.addStartTiles();
+    this.showInfoPopup(2);
     }
 
     // Update the actuator

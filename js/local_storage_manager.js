@@ -96,3 +96,11 @@ LocalStorageManager.prototype.setMaxValue_lunyu = function (maxValue) {
 LocalStorageManager.prototype.getMaxValue_lunyu = function () {
   return parseInt(this.storage.getItem(this.maxValue_lunyu)) || 0;
 };
+
+LocalStorageManager.prototype.clearMaxValue = function (mode) {
+  if (mode === "shisanjing") {
+    this.storage.removeItem(this.maxValue_shisanjing);
+  } else if (mode === "lunyu") {
+    this.storage.removeItem(this.maxValue_lunyu);
+  }
+};
