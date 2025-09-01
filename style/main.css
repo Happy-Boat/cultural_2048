@@ -842,11 +842,36 @@ hr {
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  max-width: 90%;
-  width: 500px;
+  max-width: 90%; /* 最大宽度为屏幕的90% */
+  width: clamp(300px, 80vw, 600px); /* 自适应宽度：最小300px，最大600px，中间按80%视窗宽度计算 */
+  max-height: 80vh; /* 最大高度为视窗的80% */
+  overflow-y: auto; /* 内容超出时显示滚动条 */
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 移动端特殊调整 */
+@media screen and (max-width: 520px) {
+  .info-popup {
+    padding: 15px; /* 减小内边距 */
+    border-radius: 8px; /* 减小圆角 */
+  }
+  
+  .popup-image {
+    width: 80%; /* 图片宽度占满弹窗 */
+    max-width: none; /* 取消最大宽度限制 */
+  }
+  
+  .info-popup h2 {
+    font-size: 18px; /* 减小标题字体 */
+    margin-top: 0;
+  }
+  
+  .info-popup p {
+    font-size: 14px; /* 减小正文字体 */
+    line-height: 1.5; /* 调整行高 */
+  }
 }
 
 .info-popup.active {
