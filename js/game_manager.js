@@ -115,6 +115,7 @@ GameManager.prototype.isGameTerminated = function () {
 // Set up the game
 GameManager.prototype.setup = function () {
   var previousState = this.storageManager.getGameState();
+  var mode = this.storageManager.getMode();
 
   // Reload the game from a previous game if present
   if (previousState) {
@@ -123,7 +124,16 @@ GameManager.prototype.setup = function () {
     this.score       = previousState.score;
     this.over        = previousState.over;
     this.won         = previousState.won;
-    this.keepPlaying = previousState.keepPlaying;
+    this.keepPlaying = previousState.keepPlaying; 
+    if (mode) {   
+      this.mode = mode;
+    }
+    if (mode === "shisanjing") {
+      this.maxValue    = this.storageManager.getMaxValue_shisanjing();
+    }
+    else{
+      this.maxValue    = this.storageManager.getMaxValue_lunyu();
+    }
   } else {
     this.grid        = new Grid(this.size);
     this.score       = 0;
@@ -342,6 +352,7 @@ GameManager.prototype.getLunyuName = function (value) {
   };
   return names[value] || `论语（${value}）`;
 };
+
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function () {
   if (this.storageManager.getBestScore() < this.score) {
@@ -353,6 +364,12 @@ GameManager.prototype.actuate = function () {
     this.storageManager.clearGameState();
   } else {
     this.storageManager.setGameState(this.serialize());
+    if (this.mode === "shisanjing") {
+      this.storageManager.setMaxValue_shisanjing(this.maxValue);
+    }
+    else{
+      this.storageManager.setMaxValue_lunyu(this.maxValue);
+    }
   }
 
   this.actuator.actuate(this.grid, {
