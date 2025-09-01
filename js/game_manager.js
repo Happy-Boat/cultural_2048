@@ -115,39 +115,36 @@ GameManager.prototype.isGameTerminated = function () {
 // Set up the game
 GameManager.prototype.setup = function () {
   var previousState = this.storageManager.getGameState();
-  var mode = this.storageManager.getMode();
 
-  // Reload the game from a previous game if present
+  // 直接使用 StorageManager 在构造时通过 detectMode() 判定的模式
+  this.mode = this.storageManager.mode;
+
+  // 先读取持久化的 maxValue（无论是否有 previousState）
+  if (this.mode === "shisanjing") {
+    this.maxValue = parseInt(this.storageManager.getMaxValue_shisanjing()) || 0;
+  } else {
+    this.maxValue = parseInt(this.storageManager.getMaxValue_lunyu()) || 0;
+  }
+
   if (previousState) {
-    this.grid        = new Grid(previousState.grid.size,
-                                previousState.grid.cells); // Reload grid
+    this.grid        = new Grid(previousState.grid.size, previousState.grid.cells);
     this.score       = previousState.score;
     this.over        = previousState.over;
     this.won         = previousState.won;
-    this.keepPlaying = previousState.keepPlaying; 
-    if (mode) {   
-      this.mode = mode;
-    }
-    if (mode === "shisanjing") {
-      this.maxValue    = this.storageManager.getMaxValue_shisanjing();
-    }
-    else{
-      this.maxValue    = this.storageManager.getMaxValue_lunyu();
-    }
+    this.keepPlaying = previousState.keepPlaying;
   } else {
     this.grid        = new Grid(this.size);
     this.score       = 0;
     this.over        = false;
     this.won         = false;
     this.keepPlaying = false;
-    this.maxValue    = 0; 
 
     // Add the initial tiles
     this.addStartTiles();
-  }
+    }
 
-  // Update the actuator
-  this.actuate();
+    // Update the actuator
+    this.actuate();
 };
 
 // Set up the initial tiles to start the game with

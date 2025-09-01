@@ -86,7 +86,7 @@ LocalStorageManager.prototype.setMaxValue_shisanjing = function (maxValue) {
 };
 
 LocalStorageManager.prototype.getMaxValue_shisanjing = function () {
-  return this.storage.getItem(this.maxValue_shisanjing);
+  return parseInt(this.storage.getItem(this.maxValue_shisanjing)) || 0;
 };
 
 LocalStorageManager.prototype.setMaxValue_lunyu = function (maxValue) {
@@ -94,13 +94,5 @@ LocalStorageManager.prototype.setMaxValue_lunyu = function (maxValue) {
 };
 
 LocalStorageManager.prototype.getMaxValue_lunyu = function () {
-  return this.storage.getItem(this.maxValue_lunyu);
+  return parseInt(this.storage.getItem(this.maxValue_lunyu)) || 0;
 };
-
-LocalStorageManager.prototype.setMode = function (mode) {
-  this.storage.setItem(this.mode, mode);
-}
-
-LocalStorageManager.prototype.getMode = function () {
-  return this.storage.getItem(this.mode) || 'shisanjing';
-}
