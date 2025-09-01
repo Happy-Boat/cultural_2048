@@ -449,8 +449,8 @@ GameManager.prototype.move = function (direction) {
           // Update the score
           self.score += merged.value;
 
-          // The mighty 2048 tile
-          if (merged.value === 2048) self.won = true;
+          // The mighty 8192 tile
+          if (merged.value === 8192) self.won = true;
 
           // 检查是否是新纪录数字并弹出窗口
           if (merged.value > self.maxValue && thirteenClassicsInfo[merged.value]) {
